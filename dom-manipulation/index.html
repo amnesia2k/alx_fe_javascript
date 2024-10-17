@@ -14,7 +14,13 @@
     <!-- Button to display a new random quote -->
     <button id="newQuote">Show New Quote</button>
 
-    <!-- Form will be generated dynamically for adding new quotes -->
+    <!-- Dropdown to filter quotes by category -->
+    <select id="categoryFilter" onchange="filterQuotes()">
+      <option value="all">All Categories</option>
+      <!-- Dynamically populated categories will appear here -->
+    </select>
+
+    <!-- Form to add new quotes will be generated dynamically -->
 
     <!-- Button to export quotes as a JSON file -->
     <button id="exportButton">Export Quotes to JSON</button>
@@ -27,7 +33,6 @@
       onchange="importFromJsonFile(event)"
     />
 
-    <!-- Link to the JavaScript file -->
     <script src="script.js"></script>
   </body>
 </html>
