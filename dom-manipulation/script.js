@@ -113,6 +113,11 @@ function importFromJsonFile(event) {
 // Attach event listener to the "Show New Quote" button
 document.getElementById("newQuote").addEventListener("click", showRandomQuote);
 
+// Attach event listener to the "Export Quotes" button
+document
+  .getElementById("exportButton")
+  .addEventListener("click", exportToJsonFile);
+
 // Load the last viewed quote from session storage if available
 window.onload = function () {
   createAddQuoteForm();
@@ -123,17 +128,4 @@ window.onload = function () {
     const quoteDisplay = document.getElementById("quoteDisplay");
     quoteDisplay.innerHTML = `<p>"${lastViewedQuote.text}"</p><p><strong>Category:</strong> ${lastViewedQuote.category}</p>`;
   }
-
-  // Create export button
-  const exportButton = document.createElement("button");
-  exportButton.textContent = "Export Quotes to JSON";
-  exportButton.onclick = exportToJsonFile;
-  document.body.appendChild(exportButton);
-
-  // Create file input for JSON import
-  const fileInput = document.createElement("input");
-  fileInput.type = "file";
-  fileInput.accept = ".json";
-  fileInput.onchange = importFromJsonFile;
-  document.body.appendChild(fileInput);
 };
