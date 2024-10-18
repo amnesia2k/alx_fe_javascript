@@ -13,6 +13,18 @@ let quotes = JSON.parse(localStorage.getItem("quotes")) || [
   },
 ];
 
+// Function to display a random quote from the array
+function showRandomQuote() {
+  const randomIndex = Math.floor(Math.random() * quotes.length);
+  const quote = quotes[randomIndex];
+  const quoteDisplay = document.getElementById("quoteDisplay");
+
+  quoteDisplay.innerHTML = `<p>"${quote.text}"</p><p><strong>Category:</strong> ${quote.category}</p>`;
+
+  // Save the last viewed quote to session storage
+  sessionStorage.setItem("lastViewedQuote", JSON.stringify(quote));
+}
+
 // Function to display quotes based on the selected category
 function filterQuotes() {
   const selectedCategory = document.getElementById("categoryFilter").value;
