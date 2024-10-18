@@ -64,7 +64,12 @@ async function syncQuotes() {
     resolveConflicts(serverQuotes);
 
     // Sync any new local quotes to the server
-    quotes.forEach((quote) => syncNewQuoteToServer(quote));
+    for (const quote of quotes) {
+      await syncNewQuoteToServer(quote);
+    }
+
+    // Notify the user that quotes have been synced
+    alert("Quotes synced with server!");
   } catch (error) {
     console.error("Error syncing quotes with the server:", error);
   }
